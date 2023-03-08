@@ -36,11 +36,11 @@ void	ft_getmap(char	*map_name)
 	t_map.w_cnt = ft_strlen(line);
 	while (line)
 	{
-		free(line);
 		i++;
 		ft_create_map(line);
+		free(line);
 		line = get_next_line(fd);
-		if (line)
+		if (!line)
 		{
 			w = ft_strlen(line);
 //			if (w != tmap.w_cnt)
