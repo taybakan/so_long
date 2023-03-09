@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:58:03 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/08 16:33:59 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:02:53 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int main(int argc, char **argv)
 	map_name = ft_map_name(argv[1]);
 	ft_getmap(map_name);
 	ft_printf("%s\n", map_name);
+	ft_checkmap();
 	return (0);
 }

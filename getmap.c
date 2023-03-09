@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:15:35 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/08 17:39:45 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:45:54 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,17 @@ void	ft_getmap(char	*map_name)
 		ft_create_map(line);
 		free(line);
 		line = get_next_line(fd);
-		if (!line)
+		if (line)
 		{
-			w = ft_strlen(line);
-//			if (w != tmap.w_cnt)
-//				ft_error("map_error");
+//			w = ft_strlen(line);
+//			if (w != t_map.w_cnt)	
+//			ft_printf("!map_error");
+//			exit(1);
 		}
 	}
 	t_map.l_cnt = i;
 	close(fd);
+	t_map.map[t_map.l_cnt] = NULL;
 	ft_printf("%d\n", t_map.l_cnt);
 	ft_printf("%d\n", t_map.w_cnt);
 }
