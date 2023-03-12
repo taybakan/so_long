@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:58:03 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/12 23:46:08 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/13 01:11:36 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int main(int argc, char **argv)
 		exit(1);
 	//ft_printf("bura");
 	ft_getmap();
-	ft_printf("%s\n", t_map.map[0]);
-	ft_printf("%s\n", t_map.map[1]);
-	ft_printf("%s\n", t_map.map[2]);
-	ft_printf("%s\n", t_map.map[3]);
+	ft_printf("%s", t_map.map[0]);
+	ft_printf("%s", t_map.map[1]);
+	ft_printf("%s", t_map.map[2]);
+	ft_printf("%s", t_map.map[3]);
 	return (0);
 }
