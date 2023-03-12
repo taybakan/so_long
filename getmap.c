@@ -6,69 +6,101 @@
 /*   By: taybakan <taybakan@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:15:35 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/09 17:45:54 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/13 01:00:37 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_create_map(char	*str)
+void	ft_checkmap(void)
 {
-	int		i;
+	int	i;
+	int	j;
 
-	i = 0;
-	t_map.map = malloc((sizeof(char *)) * (t_map.l_cnt + 1));
-	t_map.map[i] = str;
-	ft_printf("%s", t_map.map[i]);
-	i++;
+	i = j = t_map.p_cnt = t_map.e_cnt = t_map.c_cnt =  0;
+	while (t_map.map[i] != NULL)
+	{
+		while (t_map.map[i][j] != '\n' && t_map.map[i][j] != '\0')
+		{
+			if (t_map.map[i][j] == 'P')
+				t_map.p_cnt += 1;
+			else if (t_map.map[i][j] == 'E')
+				t_map.e_cnt += 1;
+			else if (t_map.map[i][j] == 'C')
+				t_map.c_cnt += 1;
+			else if (t_map.map[i][j] != '1' && t_map.map[i][j] != '0')
+				exit(1);
+			j++;
+		}
+		i++;
+	}
+	ft_printf("%d\n%d\n%d\n", t_map.p_cnt, t_map.e_cnt, t_map.c_cnt);
+	if (t_map.p_cnt != 1 || t_map.e_cnt != 1 || t_map.c_cnt < 1)
+		exit(1);
 }
 
-void	ft_getmap(char	*map_name)
+void	ft_readmap(void)
 {
+	char	*str;
 	int		fd;
 	int		i;
-	int		w;
-	char	*line;
+	int		j;
 
+	fd = open(t_map.name, O_RDONLY);
 	i = 0;
-	fd = open(map_name, O_RDONLY);
-	line = get_next_line(fd);
-	t_map.w_cnt = ft_strlen(line);
-	while (line)
+	j = t_map.lenght;
+	t_map.map = malloc(sizeof(char *) * (t_map.lenght + 1));
+	while (j > 0)
 	{
+		str = get_next_line(fd);
+		t_map.map[i] = str;
 		i++;
-		ft_create_map(line);
-		free(line);
-		line = get_next_line(fd);
-		if (line)
-		{
-//			w = ft_strlen(line);
-//			if (w != t_map.w_cnt)	
-//			ft_printf("!map_error");
-//			exit(1);
-		}
+		j--;
 	}
-	t_map.l_cnt = i;
+	ft_printf("%s", t_map.map[0]);
+	ft_printf("%s", t_map.map[1]);
+	ft_printf("%s", t_map.map[2]);
+	ft_printf("%s", t_map.map[3]);
+	t_map.map[i] = NULL;
 	close(fd);
-	t_map.map[t_map.l_cnt] = NULL;
-	ft_printf("%d\n", t_map.l_cnt);
-	ft_printf("%d\n", t_map.w_cnt);
 }
 
-char	*ft_map_name(char *str)
+void	ft_getdimensions(void)
 {
-	int		i;
-	char	*map_name;
-	char	*to_trim;
+	char	*line;
+	int	fd;
+	int	i;
+	int	j;
 
-	to_trim = "\t\n ";
-	map_name = ft_strtrim(str, to_trim);
-	i = ft_strlen(map_name);
-	i = i - 4;
-	if (ft_strncmp((map_name + i), ".ber", 4) != 0)
+	fd = open(t_map.name, O_RDONLY);
+	line = get_next_line(fd);
+	if (!line)
+		exit(1);
+	t_map.width = ft_strlen(line);
+	i = 0;
+	while (line)
 	{
-//		ft_error("wrong map name");
-		return ("NULL");
+		free(line);
+		line = get_next_line(fd);
+		if (line != NULL)
+		{
+			j = ft_strlen(line);
+			if(j != t_map.width)
+				exit(1);
+		}
+		i++;
 	}
-	return (map_name);
+	close(fd);
+	t_map.width -= 1;
+	t_map.lenght = i;
+	//ft_printf("%d\n%d\n",  t_map.lenght, t_map.width);
+	if (t_map.lenght < 3 || t_map.width < 3)
+		exit(1);
+}
+
+void	ft_getmap(void)
+{
+	ft_getdimensions();
+	ft_readmap();
+	ft_checkmap();
 }
