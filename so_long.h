@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:56 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/13 22:41:02 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:47:32 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ struct s_map
 	int     p_cnt;
     int     e_cnt;
 	int		c_cnt;
+    int     basket;
     int		p_x;
     int		p_y;
     int     e_x;
@@ -57,5 +58,7 @@ void	ft_hike(char **map, int c, int r);
 void    ft_window(void);
 void    ft_getstripes(t_data *data);
 void    ft_render(t_data *data);
+int     ft_keypress(int key, t_data *data);
+void    
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 09:56:16 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/13 20:13:57 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:18:16 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ void	ft_hike(char **map, int c, int r)
 		ft_hike(map, c - 1, r);
 }
 
+void	map_free(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free (map[i]);
+		i++;
+	}
+	free(map);
+}
+
 void     ft_checkpath(void)
 {
 	char	**map;
@@ -62,4 +75,5 @@ void     ft_checkpath(void)
                 ft_maperror(2);
 		}
 	}
+	map_free(map);
 }

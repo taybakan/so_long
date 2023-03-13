@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:58:03 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/13 22:03:41 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:21:51 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 	ft_readmap();
 	ft_checkmap();
 	ft_checkpath();
+	system("leaks so_long");
 	ft_window();
 	ft_printf("%s", t_map.map[0]);
 	ft_printf("%s", t_map.map[1]);
