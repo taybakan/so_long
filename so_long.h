@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:56 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/14 01:03:58 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:18:56 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ struct s_map
     int     e_cnt;
 	int		c_cnt;
     int     basket;
+    int     moves;
     int		p_x;
     int		p_y;
     int     e_x;
@@ -61,12 +62,11 @@ void	ft_checkpath(void);
 void	ft_maperror(int c);
 char	**ft_mapdup(void);
 void	ft_hike(char **map, int c, int r);
-void    ft_window(void);
+t_data  *ft_window(void);
 void    ft_getstripes(t_data *data);
 void    ft_render(t_data *data);
 int     ft_keypress(int key, t_data *data);
-int     ft_move(int m_x, int m_y, t_data *data);
-void	ft_exit(t_data *data);
-void    
+void    ft_move(int m_x, int m_y, t_data *data);
+void	ft_mapexit(t_data *data);
 
 #endif

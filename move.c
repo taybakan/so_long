@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int     ft_move(int m_x, int m_y, t_data *data)
+void     ft_move(int m_x, int m_y, t_data *data)
 {
     if (t_map.map[t_map.p_y + m_y][t_map.p_x + m_x] == '1')
         return ;
@@ -11,7 +11,7 @@ int     ft_move(int m_x, int m_y, t_data *data)
         if (t_map.basket == t_map.c_cnt)
         {
             ft_printf("move count: %d\n", ++t_map.moves);
-            ft_exit(data);
+            ft_mapexit(data);
         }
         else
             return ;
@@ -22,7 +22,7 @@ int     ft_move(int m_x, int m_y, t_data *data)
     t_map.map[t_map.p_y][t_map.p_x] = 'P';
     ft_printf("move count: %d\n", ++t_map.moves);
     mlx_clear_window(data->mlx, data->mlx_window);
-    ft_window(data);
+    ft_window();
 }
 
 int     ft_keypress(int key, t_data *data)
@@ -36,6 +36,6 @@ int     ft_keypress(int key, t_data *data)
 	if (key == KEY_D)
 		ft_move(0, 1, data);
 	if (key == KEY_ESC)
-		ft_exit(data);
+		ft_mapexit(data);
 	return (1);
 }

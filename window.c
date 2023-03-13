@@ -1,7 +1,5 @@
 #include "so_long.h"
 
-void	ft_move(int )
-
 void    ft_render(t_data *data)
 {
 	int	x;
@@ -36,16 +34,15 @@ void    ft_getstripes(t_data *data)
 	data->img[4] = mlx_xpm_file_to_image(data->mlx, "s/grass.xpm", &data->imgx, &data->imgy);
 }
 
-void    ft_window(void)
+t_data    *ft_window(void)
 {
 	t_data  *data;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return ;
+		return (NULL);
 	data->mlx = mlx_init();
 	data->mlx_window = mlx_new_window(data->mlx, t_map.width * 64, t_map.lenght * 64, "so_long");
 	ft_getstripes(data);
-	ft_render(data);
-	mlx_loop(data->mlx);
+	return(data);
 }

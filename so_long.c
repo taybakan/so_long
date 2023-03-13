@@ -6,13 +6,13 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:58:03 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/14 01:03:32 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:18:26 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_exit(t_data *data)
+void	ft_mapexit(t_data *data)
 {
 	int	i;
 
@@ -44,7 +44,8 @@ void    ft_maperror(int i)
 
 int main(int argc, char **argv)
 {
-	int	i;
+	t_data	*data;
+	int		i;
 
 	if (argc != 2)
 		ft_maperror(0);
@@ -56,11 +57,10 @@ int main(int argc, char **argv)
 	ft_readmap();
 	ft_checkmap();
 	ft_checkpath();
-	system("leaks so_long");
-	ft_window();
-	ft_printf("%s", t_map.map[0]);
-	ft_printf("%s", t_map.map[1]);
-	ft_printf("%s", t_map.map[2]);
-	ft_printf("%s", t_map.map[3]);
+	data = ft_window();
+	ft_render(data);
+	mlx_hook(data->mlx_window, 17, (1L << 2), ft_mapexit, &data);
+	mlx_hook(data->mlx_window, 2, (1L << 0), ft_keypress, &data);
+	mlx_loop(data->mlx);
 	return (0);
 }
