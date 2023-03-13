@@ -6,7 +6,7 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:56 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/14 00:47:32 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:03:58 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include "./src/gnl/get_next_line.h"
 # include "./src/mlx/mlx.h"
 # include <fcntl.h>
+
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_ESC 53
 
 struct s_map
 {
@@ -59,6 +65,8 @@ void    ft_window(void);
 void    ft_getstripes(t_data *data);
 void    ft_render(t_data *data);
 int     ft_keypress(int key, t_data *data);
+int     ft_move(int m_x, int m_y, t_data *data);
+void	ft_exit(t_data *data);
 void    
 
 #endif

@@ -6,11 +6,29 @@
 /*   By: taybakan <taybakan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:58:03 by taybakan          #+#    #+#             */
-/*   Updated: 2023/03/14 00:21:51 by taybakan         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:03:32 by taybakan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_exit(t_data *data)
+{
+	int	i;
+
+	mlx_clear_window(data->mlx, data->mlx_window);
+	mlx_destroy_image(data->mlx, data->img[0]);
+	mlx_destroy_image(data->mlx, data->img[1]);
+	mlx_destroy_image(data->mlx, data->img[2]);
+	mlx_destroy_image(data->mlx, data->img[3]);
+	mlx_destroy_image(data->mlx, data->img[4]);
+	i = 0;
+	while (t_map.map && t_map.map[i])
+		free(t_map.map[i++]);
+	free(t_map.map);
+	exit(0);
+}
+
 void    ft_maperror(int i)
 {
 	if (i == 0)

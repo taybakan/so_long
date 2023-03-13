@@ -6,7 +6,7 @@ LIBFT		= ./src/libft/libft.a
 PRINTF		= ./src/ft_printf/libftprintf.a
 GNL			= ./src/gnl/get_next_line.a
 MLX			= ./src/mlx/libmlx.a
-SRCS		= ./so_long.c ./getmap.c ./isvalid.c ./window.c
+SRCS		= ./so_long.c ./getmap.c ./isvalid.c ./window.c ./move.c
 OBJS		= $(SRCS:.c=.o)
 
 all : $(NAME)
